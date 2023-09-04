@@ -1,5 +1,19 @@
 steps:
-- name: 'docker'
-  args: ['build','-t','gcr.io/$PROJECT_ID/gcpdevops','.']
-images:
-- 'gcr.io/$PROJECT_ID/gcpdevops'
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/proven-splicer-398008/gcpdevops:latest', '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push',  'gcr.io/proven-splicer-398008/gcpdevops:latest']
+  # deploy container image to gke
+  - name: "gcr.io/proven-splicer-398008/gcpdevops:latest"
+    args:
+    - run
+    - --filename=deployment.yaml
+    - --image=gcr.io/proven-splicer-398008/gcpdevops:latest
+    - --location=us-central1
+    - --cluster=cluster1
+    - --namespace=gcp-devops-project
+    
+
