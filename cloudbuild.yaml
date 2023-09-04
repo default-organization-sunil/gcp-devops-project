@@ -7,7 +7,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',  'gcr.io/proven-splicer-398008/gcpdevops']
   # deploy container image to gke
-  - name: "gcr.io/proven-splicer-398008/gke-deploy"
+  - name: "gcr.io/proven-splicer-398008/gcpdevops:latest"
     args:
     - run
     - --filename=deployment.yaml
