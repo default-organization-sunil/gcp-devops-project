@@ -1,11 +1,11 @@
 steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/proven-splicer-398008/gcpdevops-dev', '.']
+    args: ['build', '-t', 'gcr.io/proven-splicer-398008/gcpdevops-dev:latest', '.']
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/proven-splicer-398008/gcpdevops-dev']
+    args: ['push',  'gcr.io/proven-splicer-398008/gcpdevops-dev:latest']
   # deploy container image to gke
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
