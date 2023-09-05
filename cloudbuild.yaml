@@ -13,7 +13,7 @@ steps:
     - --filename=deployment.yaml
     - --image=gcr.io/proven-splicer-398008/gcpdevops
     - --location=us-central1
-    - --cluster=cluster1
+    - --cluster=cluster-1
     - --namespace=gcp-devops-project
 
 
